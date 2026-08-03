@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "scope": "project",
+  "installPolicy": {
+    "allowGlobal": false,
+    "method": "copy",
+    "nonInteractive": true
+  },
+  "presets": {
+    "required": [
+      "codex",
+      "claude-code",
+      "github-copilot"
+    ],
+    "all": [
+      "codex",
+      "claude-code",
+      "github-copilot",
+      "cursor"
+    ]
+  },
+  "agents": {
+    "codex": {
+      "name": "Codex",
+      "projectPath": ".agents/skills",
+      "support": "required"
+    },
+    "claude-code": {
+      "name": "Claude Code",
+      "projectPath": ".claude/skills",
+      "support": "required"
+    },
+    "github-copilot": {
+      "name": "GitHub Copilot",
+      "projectPath": ".agents/skills",
+      "support": "required"
+    },
+    "cursor": {
+      "name": "Cursor",
+      "projectPath": ".agents/skills",
+      "support": "optional"
+    }
+  }
+}

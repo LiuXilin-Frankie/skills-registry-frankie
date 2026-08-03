@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-08-03",
+  "skills": [
+    {
+      "id": "getsentry/agents-md",
+      "name": "agents-md",
+      "description": "Create and maintain concise, reference-backed AGENTS.md and CLAUDE.md files.",
+      "repository": "https://github.com/getsentry/skills",
+      "path": "skills/agents-md",
+      "version": {
+        "type": "git-branch",
+        "ref": "main",
+        "rolling": true,
+        "verifiedAt": "2026-08-03"
+      },
+      "license": {
+        "spdx": "Apache-2.0",
+        "url": "https://github.com/getsentry/skills/blob/main/LICENSE"
+      },
+      "install": {
+        "runner": "skills",
+        "scope": "project",
+        "command": "npx skills add https://github.com/getsentry/skills --skill agents-md"
+      }
+    },
+    {
+      "id": "mattpocock/writing-great-skills",
+      "name": "writing-great-skills",
+      "description": "Reference for writing and editing skills well—the vocabulary and principles that make a skill predictable.",
+      "repository": "https://github.com/mattpocock/skills",
+      "path": "skills/productivity/writing-great-skills",
+      "version": {
+        "type": "git-branch",
+        "ref": "main",
+        "rolling": true,
+        "verifiedAt": "2026-08-03"
+      },
+      "license": {
+        "spdx": "MIT",
+        "url": "https://github.com/mattpocock/skills/blob/main/LICENSE"
+      },
+      "install": {
+        "runner": "skills",
+        "scope": "project",
+        "command": "npx skills add https://github.com/mattpocock/skills --skill writing-great-skills"
+      }
+    }
+  ]
+}
