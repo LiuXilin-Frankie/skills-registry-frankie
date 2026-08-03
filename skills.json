@@ -45,6 +45,28 @@
         "scope": "project",
         "command": "npx skills add https://github.com/mattpocock/skills --skill writing-great-skills"
       }
+    },
+    {
+      "id": "mattpocock/code-review",
+      "name": "code-review",
+      "description": "Review code changes against repository standards and the originating specification in parallel.",
+      "repository": "https://github.com/mattpocock/skills",
+      "path": "skills/engineering/code-review",
+      "version": {
+        "type": "git-branch",
+        "ref": "main",
+        "rolling": true,
+        "verifiedAt": "2026-08-03"
+      },
+      "license": {
+        "spdx": "MIT",
+        "url": "https://github.com/mattpocock/skills/blob/main/LICENSE"
+      },
+      "install": {
+        "runner": "skills",
+        "scope": "project",
+        "command": "npx skills add https://github.com/mattpocock/skills --skill code-review"
+      }
     }
   ]
 }

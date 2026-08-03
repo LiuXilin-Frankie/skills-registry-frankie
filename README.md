@@ -16,10 +16,11 @@ A deliberately small, curated registry of open-source Agent Skills hosted on Git
 | --- | --- | --- | --- | --- |
 | [`agents-md`](https://github.com/getsentry/skills/tree/main/skills/agents-md) | Creates and maintains concise, reference-backed `AGENTS.md` and `CLAUDE.md` files. | [`getsentry/skills`](https://github.com/getsentry/skills) | `main` (rolling) | [Apache-2.0](https://github.com/getsentry/skills/blob/main/LICENSE) |
 | [`writing-great-skills`](https://github.com/mattpocock/skills/tree/main/skills/productivity/writing-great-skills) | Reference for writing and editing predictable skills. | [`mattpocock/skills`](https://github.com/mattpocock/skills) | `main` (rolling) | [MIT](https://github.com/mattpocock/skills/blob/main/LICENSE) |
+| [`code-review`](https://github.com/mattpocock/skills/tree/main/skills/engineering/code-review) | Reviews code changes against repository standards and the originating specification in parallel. | [`mattpocock/skills`](https://github.com/mattpocock/skills) | `main` (rolling) | [MIT](https://github.com/mattpocock/skills/blob/main/LICENSE) |
 
 The machine-readable source of truth is [`skills.json`](./skills.json). A rolling version follows its declared branch; `verifiedAt` records the last manual source check.
 
-look [skill_map](./skill_map.md) file for how to use these skills. this repo will only maintain 1 skill/ 1 series skills for 1 or several tasks.
+See the [skill map](./skill_maps.md) for task-oriented guidance on using these skills. This repository maintains one skill, or one series of skills, for one or more tasks.
 
 ## Install
 
@@ -89,6 +90,39 @@ npx skills add https://github.com/mattpocock/skills \
   --yes
 ```
 
+### `code-review`
+
+Interactive project installation:
+
+```bash
+npx skills add https://github.com/mattpocock/skills --skill code-review
+```
+
+Install for the three required agents:
+
+```bash
+npx skills add https://github.com/mattpocock/skills \
+  --skill code-review \
+  --agent codex \
+  --agent claude-code \
+  --agent github-copilot \
+  --copy \
+  --yes
+```
+
+Install for the required agents plus Cursor:
+
+```bash
+npx skills add https://github.com/mattpocock/skills \
+  --skill code-review \
+  --agent codex \
+  --agent claude-code \
+  --agent github-copilot \
+  --agent cursor \
+  --copy \
+  --yes
+```
+
 The `skills` CLI uses project scope by default. Registry commands must not include `-g` or `--global`. `--copy` avoids relying on repository symlinks across operating systems.
 
 ## Agent targets
@@ -113,7 +147,7 @@ A registry entry must:
 5. Record a tag or branch and the date on which the source was verified.
 6. Preserve the upstream repository, path, version, license, and installation command without copying its skill files here.
 
-To propose a skill, edit `skills.json` and add the corresponding human-readable row and installation example to this README. Keep the repository limited to the four documented files.
+To propose a skill, edit `skills.json` and add the corresponding human-readable row and installation example to this README. Keep the repository limited to the five documented files.
 
 ## Validation
 
@@ -123,7 +157,7 @@ Requires Node.js 18 or newer and has no package dependencies:
 npm run check
 ```
 
-The check validates the four-file layout, JSON syntax, required registry fields, GitHub-only sources, known agent presets, and the repo-only installation policy.
+The check validates the five-file layout, JSON syntax, required registry fields, GitHub-only sources, known agent presets, and the repo-only installation policy.
 
 ## Security
 

@@ -6,6 +6,7 @@ This file is the skill map for different tasks.
 ## Task List
 1. edit agents
 2. write skills
+3. review code changes
 
 
 ### 1. edit agents
@@ -15,4 +16,7 @@ This file is the skill map for different tasks.
 ### 2. write skills
 - skill: writing-great-skills
 
+### 3. review code changes
+- skill: code-review
+- notes: compares changes with both repository standards and the originating specification
 
