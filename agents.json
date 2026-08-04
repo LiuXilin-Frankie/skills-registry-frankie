@@ -4,18 +4,14 @@
   "installPolicy": {
     "allowGlobal": false,
     "method": "copy",
-    "nonInteractive": true
+    "nonInteractive": true,
+    "overwriteExisting": true
   },
   "presets": {
-    "required": [
-      "codex",
-      "claude-code",
-      "github-copilot"
-    ],
-    "all": [
-      "codex",
-      "claude-code",
+    "default": [
       "github-copilot",
+      "codex",
+      "claude-code",
       "cursor"
     ]
   },
@@ -38,7 +34,7 @@
     "cursor": {
       "name": "Cursor",
       "projectPath": ".agents/skills",
-      "support": "optional"
+      "support": "required"
     }
   }
 }

@@ -6,7 +6,7 @@ A deliberately small, curated registry of open-source Agent Skills hosted on Git
 
 - GitHub-hosted and open source only.
 - Install one named skill without installing the rest of its source repository.
-- Support Codex, Claude Code, and GitHub Copilot; optionally support Cursor.
+- Support GitHub Copilot, Codex, Claude Code, and Cursor by default.
 - Use the open-source [`skills` CLI](https://github.com/vercel-labs/skills) through `npx`.
 - Install into the current repository only, never into a user-level directory.
 
@@ -24,106 +24,20 @@ See the [skill map](./skill_maps.md) for task-oriented guidance on using these s
 
 ## Install
 
-### `agents-md`
-
-Interactive project installation:
+Install or update every registered skill for GitHub Copilot, Codex, Claude Code, and Cursor:
 
 ```bash
-npx skills add https://github.com/getsentry/skills --skill agents-md
+# Install into the current repository
+npm run install:all
+
+# Install into a specific repository
+npm run install:all -- --target /path/to/repository
+
+# Preview without changing files
+npm run install:all:dry-run
 ```
 
-Install for the three required agents:
-
-```bash
-npx skills add https://github.com/getsentry/skills \
-  --skill agents-md \
-  --agent codex \
-  --agent claude-code \
-  --agent github-copilot \
-  --copy \
-  --yes
-```
-
-Install for the required agents plus Cursor:
-
-```bash
-npx skills add https://github.com/getsentry/skills \
-  --skill agents-md \
-  --agent codex \
-  --agent claude-code \
-  --agent github-copilot \
-  --agent cursor \
-  --copy \
-  --yes
-```
-
-### `writing-great-skills`
-
-Interactive project installation:
-
-```bash
-npx skills add https://github.com/mattpocock/skills --skill writing-great-skills
-```
-
-Install for the three required agents:
-
-```bash
-npx skills add https://github.com/mattpocock/skills \
-  --skill writing-great-skills \
-  --agent codex \
-  --agent claude-code \
-  --agent github-copilot \
-  --copy \
-  --yes
-```
-
-Install for the required agents plus Cursor:
-
-```bash
-npx skills add https://github.com/mattpocock/skills \
-  --skill writing-great-skills \
-  --agent codex \
-  --agent claude-code \
-  --agent github-copilot \
-  --agent cursor \
-  --copy \
-  --yes
-```
-
-### `code-review`
-
-Interactive project installation:
-
-```bash
-npx skills add https://github.com/mattpocock/skills --skill code-review
-```
-
-Install for the three required agents:
-
-```bash
-npx skills add https://github.com/mattpocock/skills \
-  --skill code-review \
-  --agent codex \
-  --agent claude-code \
-  --agent github-copilot \
-  --copy \
-  --yes
-```
-
-Install for the required agents plus Cursor:
-
-```bash
-npx skills add https://github.com/mattpocock/skills \
-  --skill code-review \
-  --agent codex \
-  --agent claude-code \
-  --agent github-copilot \
-  --agent cursor \
-  --copy \
-  --yes
-```
-
-The `skills` CLI uses project scope by default. Registry commands must not include `-g` or `--global`. `--copy` avoids relying on repository symlinks across operating systems.
+The target directory must already exist; quote paths with spaces. Installation is project-scoped, non-interactive, and overwrites existing skill files. Use `-t` as the short form of `--target`.
 
 ## Agent targets
 
@@ -132,7 +46,7 @@ The `skills` CLI uses project scope by default. Registry commands must not inclu
 | Codex | `codex` | `.agents/skills` | Required |
 | Claude Code | `claude-code` | `.claude/skills` | Required |
 | GitHub Copilot | `github-copilot` | `.agents/skills` | Required |
-| Cursor | `cursor` | `.agents/skills` | Optional |
+| Cursor | `cursor` | `.agents/skills` | Required |
 
 The machine-readable target configuration is [`agents.json`](./agents.json).
 
@@ -143,11 +57,11 @@ A registry entry must:
 1. Point to a public GitHub repository with an identifiable open-source license.
 2. Point to a directory containing a valid `SKILL.md`.
 3. Provide an `npx skills add ... --skill <name>` command that selects only that skill.
-4. Work at project scope with Codex, Claude Code, and GitHub Copilot.
+4. Work at project scope with GitHub Copilot, Codex, Claude Code, and Cursor.
 5. Record a tag or branch and the date on which the source was verified.
 6. Preserve the upstream repository, path, version, license, and installation command without copying its skill files here.
 
-To propose a skill, edit `skills.json` and add the corresponding human-readable row and installation example to this README. Keep the repository limited to the five documented files.
+To propose a skill, edit `skills.json` and add the corresponding human-readable row and installation example to this README. The one-click installer reads the registry automatically, so no script change is needed.
 
 ## Validation
 
@@ -157,7 +71,7 @@ Requires Node.js 18 or newer and has no package dependencies:
 npm run check
 ```
 
-The check validates the five-file layout, JSON syntax, required registry fields, GitHub-only sources, known agent presets, and the repo-only installation policy.
+The check validates the documented file layout, JSON syntax, required registry fields, GitHub-only sources, the four-agent default preset, and the repo-only overwrite policy.
 
 ## Security
 
