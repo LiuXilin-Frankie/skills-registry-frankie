@@ -15,8 +15,10 @@ A deliberately small, curated registry of open-source Agent Skills hosted on Git
 | Skill | What it does | Source | Version | License |
 | --- | --- | --- | --- | --- |
 | [`agents-md`](https://github.com/getsentry/skills/tree/main/skills/agents-md) | Creates and maintains concise, reference-backed `AGENTS.md` and `CLAUDE.md` files. | [`getsentry/skills`](https://github.com/getsentry/skills) | `main` (rolling) | [Apache-2.0](https://github.com/getsentry/skills/blob/main/LICENSE) |
+| [`code-simplifier`](https://github.com/getsentry/skills/tree/main/skills/code-simplifier) | Simplifies recently modified code for clarity, consistency, and maintainability while preserving behavior. | [`getsentry/skills`](https://github.com/getsentry/skills) | `main` (rolling) | [Apache-2.0](https://github.com/getsentry/skills/blob/main/LICENSE) |
 | [`writing-great-skills`](https://github.com/mattpocock/skills/tree/main/skills/productivity/writing-great-skills) | Reference for writing and editing predictable skills. | [`mattpocock/skills`](https://github.com/mattpocock/skills) | `main` (rolling) | [MIT](https://github.com/mattpocock/skills/blob/main/LICENSE) |
 | [`code-review`](https://github.com/mattpocock/skills/tree/main/skills/engineering/code-review) | Reviews code changes against repository standards and the originating specification in parallel. | [`mattpocock/skills`](https://github.com/mattpocock/skills) | `main` (rolling) | [MIT](https://github.com/mattpocock/skills/blob/main/LICENSE) |
+| [`setup-matt-pocock-skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/setup-matt-pocock-skills) | Configures a project's issue tracker and domain documentation for engineering skills such as `code-review`; configures triage labels only when `triage` is installed. | [`mattpocock/skills`](https://github.com/mattpocock/skills) | `main` (rolling) | [MIT](https://github.com/mattpocock/skills/blob/main/LICENSE) |
 
 The machine-readable source of truth is [`skills.json`](./skills.json). A rolling version follows its declared branch; `verifiedAt` records the last manual source check.
 
@@ -38,6 +40,26 @@ npm run install:all:dry-run
 ```
 
 The target directory must already exist; quote paths with spaces. Installation is project-scoped, non-interactive, and overwrites existing skill files. Use `-t` as the short form of `--target`.
+
+To install only `code-simplifier`, run this command from the target project directory:
+
+```bash
+npx skills add https://github.com/getsentry/skills --skill code-simplifier --agent github-copilot --agent codex --agent claude-code --agent cursor --copy --yes
+```
+
+To install only `setup-matt-pocock-skills`, run this command from the target project directory:
+
+```bash
+npx skills add https://github.com/mattpocock/skills --skill setup-matt-pocock-skills --agent github-copilot --agent codex --agent claude-code --agent cursor --copy --yes
+```
+
+### First use of code-review
+
+Installation makes the setup skill available; it does not run initialization. Before first using `code-review` in a target project, explicitly invoke `setup-matt-pocock-skills` there (for example, `/setup-matt-pocock-skills` in agents supporting slash commands), unless equivalent issue-tracker configuration is already available.
+
+The [upstream setup workflow](https://github.com/mattpocock/skills/blob/main/skills/engineering/setup-matt-pocock-skills/SKILL.md) asks where requirements are tracked, prepares `docs/agents/issue-tracker.md` and `docs/agents/domain.md`, and adds pointers to `AGENTS.md` or `CLAUDE.md`. GitHub uses `gh`, GitLab uses `glab`, and local Markdown is also supported. Triage label setup is skipped when `triage` is not installed. This registry selects setup as one named skill; its bundled templates come with it.
+
+`code-review` also requires an agent capable of running parallel sub-agents. If no spec is available, its workflow permits skipping the Spec review and reporting that omission.
 
 ## Agent targets
 
