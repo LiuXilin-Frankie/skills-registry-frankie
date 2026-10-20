@@ -47,16 +47,16 @@
       }
     },
     {
-      "id": "mattpocock/writing-great-skills",
-      "name": "writing-great-skills",
-      "description": "Reference for writing and editing skills well—the vocabulary and principles that make a skill predictable.",
+      "id": "mattpocock/writing-for-agents",
+      "name": "writing-for-agents",
+      "description": "Reference for writing predictable agent-facing documents, including skills, AGENTS.md, CLAUDE.md, and linked documentation.",
       "repository": "https://github.com/mattpocock/skills",
-      "path": "skills/productivity/writing-great-skills",
+      "path": "skills/productivity/writing-for-agents",
       "version": {
         "type": "git-branch",
         "ref": "main",
         "rolling": true,
-        "verifiedAt": "2026-08-03"
+        "verifiedAt": "2026-10-19"
       },
       "license": {
         "spdx": "MIT",
@@ -65,7 +65,7 @@
       "install": {
         "runner": "skills",
         "scope": "project",
-        "command": "npx skills add https://github.com/mattpocock/skills --skill writing-great-skills"
+        "command": "npx skills add https://github.com/mattpocock/skills --skill writing-for-agents"
       }
     },
     {
