@@ -19,6 +19,7 @@ A deliberately small, curated registry of open-source Agent Skills hosted on Git
 | [`writing-for-agents`](https://github.com/mattpocock/skills/tree/main/skills/productivity/writing-for-agents) | Reference for writing predictable agent-facing documents, including skills, `AGENTS.md`, `CLAUDE.md`, and linked documentation. | [`mattpocock/skills`](https://github.com/mattpocock/skills) | `main` (rolling) | [MIT](https://github.com/mattpocock/skills/blob/main/LICENSE) |
 | [`code-review`](https://github.com/mattpocock/skills/tree/main/skills/engineering/code-review) | Reviews code changes against repository standards and the originating specification in parallel. | [`mattpocock/skills`](https://github.com/mattpocock/skills) | `main` (rolling) | [MIT](https://github.com/mattpocock/skills/blob/main/LICENSE) |
 | [`setup-matt-pocock-skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/setup-matt-pocock-skills) | Configures a project's issue tracker and domain documentation for engineering skills such as `code-review`; configures triage labels only when `triage` is installed. | [`mattpocock/skills`](https://github.com/mattpocock/skills) | `main` (rolling) | [MIT](https://github.com/mattpocock/skills/blob/main/LICENSE) |
+| [`training-curve-plot`](https://github.com/LiuXilin-Frankie/training-curve-plot/blob/main/SKILL.md) | Plots comparable ML training and evaluation curves with highlighted candidates, controls, baselines, and selected checkpoints; exports PNG and SVG. | [`LiuXilin-Frankie/training-curve-plot`](https://github.com/LiuXilin-Frankie/training-curve-plot) | `main` (rolling) | [MIT](https://github.com/LiuXilin-Frankie/training-curve-plot/blob/main/LICENSE) |
 
 The machine-readable source of truth is [`skills.json`](./skills.json). A rolling version follows its declared branch; `verifiedAt` records the last manual source check.
 
@@ -68,6 +69,14 @@ To install only `setup-matt-pocock-skills`, run this command from the target pro
 ```bash
 npx skills add https://github.com/mattpocock/skills --skill setup-matt-pocock-skills --agent github-copilot --agent codex --agent claude-code --agent cursor --copy --yes
 ```
+
+To install only `training-curve-plot`, run this command from the target project directory:
+
+```bash
+npx skills add https://github.com/LiuXilin-Frankie/training-curve-plot --skill training-curve-plot --agent github-copilot --agent codex --agent claude-code --agent cursor --copy --yes
+```
+
+Plotting requires Python and Matplotlib separately; Python 3.12 is recommended. Follow the upstream [Python setup instructions](https://github.com/LiuXilin-Frankie/training-curve-plot/blob/main/INSTALL.md#run-the-example) after installing the skill. The registry uses the `skills` CLI with the GitHub source, so installation does not depend on publication of the upstream npm package.
 
 ### Migrating writing-great-skills
 

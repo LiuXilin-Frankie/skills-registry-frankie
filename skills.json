@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-19",
+  "updatedAt": "2026-10-23",
   "skills": [
     {
       "id": "getsentry/agents-md",
@@ -110,6 +110,28 @@
         "runner": "skills",
         "scope": "project",
         "command": "npx skills add https://github.com/mattpocock/skills --skill code-review"
+      }
+    },
+    {
+      "id": "LiuXilin-Frankie/training-curve-plot",
+      "name": "training-curve-plot",
+      "description": "Plot comparable ML training and evaluation curves with highlighted candidates, controls, aligned baselines, and selected checkpoints; export PNG and SVG with Matplotlib.",
+      "repository": "https://github.com/LiuXilin-Frankie/training-curve-plot",
+      "path": ".",
+      "version": {
+        "type": "git-branch",
+        "ref": "main",
+        "rolling": true,
+        "verifiedAt": "2026-10-23"
+      },
+      "license": {
+        "spdx": "MIT",
+        "url": "https://github.com/LiuXilin-Frankie/training-curve-plot/blob/main/LICENSE"
+      },
+      "install": {
+        "runner": "skills",
+        "scope": "project",
+        "command": "npx skills add https://github.com/LiuXilin-Frankie/training-curve-plot --skill training-curve-plot"
       }
     }
   ]
