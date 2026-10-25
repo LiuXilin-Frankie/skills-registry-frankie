@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-23",
+  "updatedAt": "2026-10-26",
   "skills": [
     {
       "id": "getsentry/agents-md",
@@ -132,6 +132,28 @@
         "runner": "skills",
         "scope": "project",
         "command": "npx skills add https://github.com/LiuXilin-Frankie/training-curve-plot --skill training-curve-plot"
+      }
+    },
+    {
+      "id": "LiuXilin-Frankie/quant-trading-model-doc",
+      "name": "quant-trading-model-doc",
+      "description": "Write and maintain reproducible options trading model documentation covering data contracts, formulas, calibration, information boundaries, and fallback rules, with document approval before model-affecting changes.",
+      "repository": "https://github.com/LiuXilin-Frankie/quant-trading-model-doc",
+      "path": ".",
+      "version": {
+        "type": "git-branch",
+        "ref": "main",
+        "rolling": true,
+        "verifiedAt": "2026-10-26"
+      },
+      "license": {
+        "spdx": "MIT",
+        "url": "https://github.com/LiuXilin-Frankie/quant-trading-model-doc/blob/main/LICENSE"
+      },
+      "install": {
+        "runner": "skills",
+        "scope": "project",
+        "command": "npx skills add https://github.com/LiuXilin-Frankie/quant-trading-model-doc --skill quant-trading-model-doc"
       }
     }
   ]

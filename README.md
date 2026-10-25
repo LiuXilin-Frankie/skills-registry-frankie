@@ -20,6 +20,7 @@ A deliberately small, curated registry of open-source Agent Skills hosted on Git
 | [`code-review`](https://github.com/mattpocock/skills/tree/main/skills/engineering/code-review) | Reviews code changes against repository standards and the originating specification in parallel. | [`mattpocock/skills`](https://github.com/mattpocock/skills) | `main` (rolling) | [MIT](https://github.com/mattpocock/skills/blob/main/LICENSE) |
 | [`setup-matt-pocock-skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/setup-matt-pocock-skills) | Configures a project's issue tracker and domain documentation for engineering skills such as `code-review`; configures triage labels only when `triage` is installed. | [`mattpocock/skills`](https://github.com/mattpocock/skills) | `main` (rolling) | [MIT](https://github.com/mattpocock/skills/blob/main/LICENSE) |
 | [`training-curve-plot`](https://github.com/LiuXilin-Frankie/training-curve-plot/blob/main/SKILL.md) | Plots comparable ML training and evaluation curves with highlighted candidates, controls, baselines, and selected checkpoints; exports PNG and SVG. | [`LiuXilin-Frankie/training-curve-plot`](https://github.com/LiuXilin-Frankie/training-curve-plot) | `main` (rolling) | [MIT](https://github.com/LiuXilin-Frankie/training-curve-plot/blob/main/LICENSE) |
+| [`quant-trading-model-doc`](https://github.com/LiuXilin-Frankie/quant-trading-model-doc/blob/main/SKILL.md) | Writes reproducible options trading model documentation and requests document approval before model-affecting changes. | [`LiuXilin-Frankie/quant-trading-model-doc`](https://github.com/LiuXilin-Frankie/quant-trading-model-doc) | `main` (rolling) | [MIT](https://github.com/LiuXilin-Frankie/quant-trading-model-doc/blob/main/LICENSE) |
 
 The machine-readable source of truth is [`skills.json`](./skills.json). A rolling version follows its declared branch; `verifiedAt` records the last manual source check.
 
@@ -77,6 +78,14 @@ npx skills add https://github.com/LiuXilin-Frankie/training-curve-plot --skill t
 ```
 
 Plotting requires Python and Matplotlib separately; Python 3.12 is recommended. Follow the upstream [Python setup instructions](https://github.com/LiuXilin-Frankie/training-curve-plot/blob/main/INSTALL.md#run-the-example) after installing the skill. The registry uses the `skills` CLI with the GitHub source, so installation does not depend on publication of the upstream npm package.
+
+To install only `quant-trading-model-doc`, run this command from the target project directory:
+
+```bash
+npx skills add https://github.com/LiuXilin-Frankie/quant-trading-model-doc --skill quant-trading-model-doc --agent github-copilot --agent codex --agent claude-code --agent cursor --copy --yes
+```
+
+The upstream [requirements](https://github.com/LiuXilin-Frankie/quant-trading-model-doc/blob/main/README.md#requirements) specify Node.js 22.20 or later and npm for installation. Document validation requires Python 3 with no third-party packages. The bundled `scripts/check_doc.py` checks document structure and local links; it does not verify formulas or model correctness. The skill requests approval of the relevant document in the current conversation before model-affecting changes, unless the user explicitly opts out. Its builder check uses a fresh sub-agent when available and falls back to direct review otherwise.
 
 ### Migrating writing-great-skills
 
