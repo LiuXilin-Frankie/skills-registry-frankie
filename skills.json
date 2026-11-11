@@ -1,7 +1,76 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-26",
+  "updatedAt": "2026-11-12",
   "skills": [
+    {
+      "id": "trailofbits/spec-to-code-compliance",
+      "name": "spec-to-code-compliance",
+      "description": "Audit documented requirements against implementation with per-requirement evidence, independent refutation, and detection of undocumented behavior.",
+      "repository": "https://github.com/trailofbits/skills",
+      "path": "plugins/spec-to-code-compliance/skills/spec-to-code-compliance",
+      "version": {
+        "type": "git-branch",
+        "ref": "main",
+        "rolling": true,
+        "verifiedAt": "2026-11-12"
+      },
+      "license": {
+        "spdx": "CC-BY-SA-4.0",
+        "url": "https://github.com/trailofbits/skills/blob/main/LICENSE"
+      },
+      "install": {
+        "runner": "skills",
+        "scope": "project",
+        "enabled": false,
+        "blockedReason": "The current skill requires the sibling workflows/spec-compliance.js and agents/spec-compliance-checker.md plus their plugin runtime. Named-skill installation copies only the skill directory; complete project-scoped operation across all four required agents is not verified.",
+        "command": "npx skills add https://github.com/trailofbits/skills --skill spec-to-code-compliance"
+      }
+    },
+    {
+      "id": "getsentry/doc-coauthoring",
+      "name": "doc-coauthoring",
+      "description": "Co-author and refine documentation, technical specifications, and decision documents through context gathering, iterative structuring, and independent reader testing.",
+      "repository": "https://github.com/getsentry/skills",
+      "path": "skills/doc-coauthoring",
+      "version": {
+        "type": "git-branch",
+        "ref": "main",
+        "rolling": true,
+        "verifiedAt": "2026-11-12"
+      },
+      "license": {
+        "spdx": "Apache-2.0",
+        "url": "https://github.com/getsentry/skills/blob/main/LICENSE",
+        "notes": "Records Sentry's repository-level license declaration. The skill attributes its workflow to Anthropic; verification of Sentry's declaration does not establish the full upstream authorization chain."
+      },
+      "install": {
+        "runner": "skills",
+        "scope": "project",
+        "command": "npx skills add https://github.com/getsentry/skills --skill doc-coauthoring"
+      }
+    },
+    {
+      "id": "janestreet/socratic-tutor",
+      "name": "socratic-tutor",
+      "description": "Teach and assess a topic through diagnostic questions, a skill map with levels 0-5, one-question-at-a-time Socratic practice, spaced review, and a final assessment.",
+      "repository": "https://github.com/janestreet/agent_skills",
+      "path": "socratic-tutor",
+      "version": {
+        "type": "git-branch",
+        "ref": "master",
+        "rolling": true,
+        "verifiedAt": "2026-11-12"
+      },
+      "license": {
+        "spdx": "MIT",
+        "url": "https://github.com/janestreet/agent_skills/blob/master/LICENSE.md"
+      },
+      "install": {
+        "runner": "skills",
+        "scope": "project",
+        "command": "npx skills add https://github.com/janestreet/agent_skills --skill socratic-tutor"
+      }
+    },
     {
       "id": "getsentry/agents-md",
       "name": "agents-md",
@@ -44,6 +113,50 @@
         "runner": "skills",
         "scope": "project",
         "command": "npx skills add https://github.com/getsentry/skills --skill code-simplifier"
+      }
+    },
+    {
+      "id": "mattpocock/grilling",
+      "name": "grilling",
+      "description": "Stress-test a plan, decision, or idea through dependency-aware rounds of questions and recommended answers until a shared understanding is confirmed.",
+      "repository": "https://github.com/mattpocock/skills",
+      "path": "skills/productivity/grilling",
+      "version": {
+        "type": "git-branch",
+        "ref": "main",
+        "rolling": true,
+        "verifiedAt": "2026-11-02"
+      },
+      "license": {
+        "spdx": "MIT",
+        "url": "https://github.com/mattpocock/skills/blob/main/LICENSE"
+      },
+      "install": {
+        "runner": "skills",
+        "scope": "project",
+        "command": "npx skills add https://github.com/mattpocock/skills --skill grilling"
+      }
+    },
+    {
+      "id": "mattpocock/grill-me",
+      "name": "grill-me",
+      "description": "Explicitly invoke Matt Pocock's plan and design interview by delegating to the required grilling skill.",
+      "repository": "https://github.com/mattpocock/skills",
+      "path": "skills/productivity/grill-me",
+      "version": {
+        "type": "git-branch",
+        "ref": "main",
+        "rolling": true,
+        "verifiedAt": "2026-11-02"
+      },
+      "license": {
+        "spdx": "MIT",
+        "url": "https://github.com/mattpocock/skills/blob/main/LICENSE"
+      },
+      "install": {
+        "runner": "skills",
+        "scope": "project",
+        "command": "npx skills add https://github.com/mattpocock/skills --skill grill-me"
       }
     },
     {

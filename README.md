@@ -1,6 +1,15 @@
 # Open Skill Registry
 
-A deliberately small, curated registry of open-source Agent Skills hosted on GitHub. This repository stores metadata and installation instructions only; it does not vendor or modify upstream skill files.
+Personal favorite skills. I want use this open source repo to reflact my own AI work-flows. This README file is not allowed to be edited by AI.
+
+## AI skill map
+skills in this repo can be dive into the following categories:
+1. research skills:
+    + 
+2. proj builkding skills:
+3. code review skills:
+4. plot skills:
+5. harness skills:
 
 ## Principles
 
@@ -10,149 +19,14 @@ A deliberately small, curated registry of open-source Agent Skills hosted on Git
 - Use the open-source [`skills` CLI](https://github.com/vercel-labs/skills) through `npx`.
 - Install into the current repository only, never into a user-level directory.
 
-## Skills
+## Documentation
 
-| Skill | What it does | Source | Version | License |
-| --- | --- | --- | --- | --- |
-| [`agents-md`](https://github.com/getsentry/skills/tree/main/skills/agents-md) | Creates and maintains concise, reference-backed `AGENTS.md` and `CLAUDE.md` files. | [`getsentry/skills`](https://github.com/getsentry/skills) | `main` (rolling) | [Apache-2.0](https://github.com/getsentry/skills/blob/main/LICENSE) |
-| [`code-simplifier`](https://github.com/getsentry/skills/tree/main/skills/code-simplifier) | Simplifies recently modified code for clarity, consistency, and maintainability while preserving behavior. | [`getsentry/skills`](https://github.com/getsentry/skills) | `main` (rolling) | [Apache-2.0](https://github.com/getsentry/skills/blob/main/LICENSE) |
-| [`writing-for-agents`](https://github.com/mattpocock/skills/tree/main/skills/productivity/writing-for-agents) | Reference for writing predictable agent-facing documents, including skills, `AGENTS.md`, `CLAUDE.md`, and linked documentation. | [`mattpocock/skills`](https://github.com/mattpocock/skills) | `main` (rolling) | [MIT](https://github.com/mattpocock/skills/blob/main/LICENSE) |
-| [`code-review`](https://github.com/mattpocock/skills/tree/main/skills/engineering/code-review) | Reviews code changes against repository standards and the originating specification in parallel. | [`mattpocock/skills`](https://github.com/mattpocock/skills) | `main` (rolling) | [MIT](https://github.com/mattpocock/skills/blob/main/LICENSE) |
-| [`setup-matt-pocock-skills`](https://github.com/mattpocock/skills/tree/main/skills/engineering/setup-matt-pocock-skills) | Configures a project's issue tracker and domain documentation for engineering skills such as `code-review`; configures triage labels only when `triage` is installed. | [`mattpocock/skills`](https://github.com/mattpocock/skills) | `main` (rolling) | [MIT](https://github.com/mattpocock/skills/blob/main/LICENSE) |
-| [`training-curve-plot`](https://github.com/LiuXilin-Frankie/training-curve-plot/blob/main/SKILL.md) | Plots comparable ML training and evaluation curves with highlighted candidates, controls, baselines, and selected checkpoints; exports PNG and SVG. | [`LiuXilin-Frankie/training-curve-plot`](https://github.com/LiuXilin-Frankie/training-curve-plot) | `main` (rolling) | [MIT](https://github.com/LiuXilin-Frankie/training-curve-plot/blob/main/LICENSE) |
-| [`quant-trading-model-doc`](https://github.com/LiuXilin-Frankie/quant-trading-model-doc/blob/main/SKILL.md) | Writes reproducible options trading model documentation and requests document approval before model-affecting changes. | [`LiuXilin-Frankie/quant-trading-model-doc`](https://github.com/LiuXilin-Frankie/quant-trading-model-doc) | `main` (rolling) | [MIT](https://github.com/LiuXilin-Frankie/quant-trading-model-doc/blob/main/LICENSE) |
-
-The machine-readable source of truth is [`skills.json`](./skills.json). A rolling version follows its declared branch; `verifiedAt` records the last manual source check.
-
-See the [skill map](./skill_maps.md) for task-oriented guidance on using these skills. This repository maintains one skill, or one series of skills, for one or more tasks.
-
-## Install
-
-For an installation, update, or sync request, first confirm the user's target project and ask whether they agree to remove all project-scoped skills there, including old versions, retired entries, and separately installed skills, then install the current registry. State the absolute target path and removal scope. Cleanup requires explicit approval for this operation; no reply is not approval. Do not ask again if this operation is already approved.
-
-Process only the target specified by the user. If the path is unclear, confirm it before proceeding; do not scan or clean other projects. The policy applies to every target project, not to all projects in one operation. Filesystem and network permission requirements still apply.
-
-After approval, confirm that the target directory exists and run cleanup from that directory:
-
-```bash
-cd "/path/to/repository"
-npx --yes skills remove --all
-```
-
-Use the CLI to manage project-scoped skill directories and installation records. Cleanup includes CLI-recognized project skills across agents, including skills outside this registry. Do not use `--global` or delete entire `.agents`, `.claude`, or other configuration directories. Preserve project instructions, business code, and project configuration generated by setup skills.
-
-Stop and report if cleanup fails. After it succeeds, run the installer from this registry's directory, passing the target explicitly:
-
-```bash
-npm run install:all -- --target "/path/to/repository"
-```
-
-Installation is project-scoped, non-interactive, and overwrites existing skill files. Use `-t` as the short form of `--target`. Without `--target`, the installer uses the current directory.
-
-`install:all` itself only installs and overwrites skills; approved cleanup and reinstallation require both steps. If the user declines cleanup, skip removal and perform only the authorized installation or update, explaining that retired names and extra skills remain.
-
-For a preview request, show the cleanup scope and command without executing cleanup, then preview installation from this registry's directory:
-
-```bash
-npm run install:all:dry-run -- --target "/path/to/repository"
-```
-
-Report successful and failed installs accurately. If installation fails after cleanup, report the incomplete result and retry the failed installs; do not claim that sync completed. On completion, verify the installed files and lockfile and report the result.
-
-To install only `code-simplifier`, run this command from the target project directory:
-
-```bash
-npx skills add https://github.com/getsentry/skills --skill code-simplifier --agent github-copilot --agent codex --agent claude-code --agent cursor --copy --yes
-```
-
-To install only `setup-matt-pocock-skills`, run this command from the target project directory:
-
-```bash
-npx skills add https://github.com/mattpocock/skills --skill setup-matt-pocock-skills --agent github-copilot --agent codex --agent claude-code --agent cursor --copy --yes
-```
-
-To install only `training-curve-plot`, run this command from the target project directory:
-
-```bash
-npx skills add https://github.com/LiuXilin-Frankie/training-curve-plot --skill training-curve-plot --agent github-copilot --agent codex --agent claude-code --agent cursor --copy --yes
-```
-
-Plotting requires Python and Matplotlib separately; Python 3.12 is recommended. Follow the upstream [Python setup instructions](https://github.com/LiuXilin-Frankie/training-curve-plot/blob/main/INSTALL.md#run-the-example) after installing the skill. The registry uses the `skills` CLI with the GitHub source, so installation does not depend on publication of the upstream npm package.
-
-To install only `quant-trading-model-doc`, run this command from the target project directory:
-
-```bash
-npx skills add https://github.com/LiuXilin-Frankie/quant-trading-model-doc --skill quant-trading-model-doc --agent github-copilot --agent codex --agent claude-code --agent cursor --copy --yes
-```
-
-The upstream [requirements](https://github.com/LiuXilin-Frankie/quant-trading-model-doc/blob/main/README.md#requirements) specify Node.js 22.20 or later and npm for installation. Document validation requires Python 3 with no third-party packages. The bundled `scripts/check_doc.py` checks document structure and local links; it does not verify formulas or model correctness. The skill requests approval of the relevant document in the current conversation before model-affecting changes, unless the user explicitly opts out. Its builder check uses a fresh sub-agent when available and falls back to direct review otherwise.
-
-### Migrating writing-great-skills
-
-Upstream [renamed and restructured](https://github.com/mattpocock/skills/commit/1fc6573) `writing-great-skills` as `writing-for-agents`, with no alias for the old name. The cleanup-and-install workflow above removes the retired name after user approval and installs the new entry. Installation alone leaves the retired name in place.
-
-### First use of code-review
-
-Installation makes the setup skill available; it does not run initialization. Before first using `code-review` in a target project, explicitly invoke `setup-matt-pocock-skills` there (for example, `/setup-matt-pocock-skills` in agents supporting slash commands), unless equivalent issue-tracker configuration is already available.
-
-The [upstream setup workflow](https://github.com/mattpocock/skills/blob/main/skills/engineering/setup-matt-pocock-skills/SKILL.md) asks where requirements are tracked, prepares `docs/agents/issue-tracker.md` and `docs/agents/domain.md`, and adds pointers to `AGENTS.md` or `CLAUDE.md`. GitHub uses `gh`, GitLab uses `glab`, and local Markdown is also supported. Triage label setup is skipped when `triage` is not installed. This registry selects setup as one named skill; its bundled templates come with it.
-
-`code-review` also requires an agent capable of running parallel sub-agents. If no spec is available, its workflow permits skipping the Spec review and reporting that omission.
-
-## Agent targets
-
-| Agent | CLI identifier | Project directory | Status |
-| --- | --- | --- | --- |
-| Codex | `codex` | `.agents/skills` | Required |
-| Claude Code | `claude-code` | `.claude/skills` | Required |
-| GitHub Copilot | `github-copilot` | `.agents/skills` | Required |
-| Cursor | `cursor` | `.agents/skills` | Required |
-
-The machine-readable target configuration is [`agents.json`](./agents.json).
-
-## Admission criteria
-
-A registry entry must:
-
-1. Point to a public GitHub repository with an identifiable open-source license.
-2. Point to a directory containing a valid `SKILL.md`.
-3. Provide an `npx skills add ... --skill <name>` command that selects only that skill.
-4. Work at project scope with GitHub Copilot, Codex, Claude Code, and Cursor.
-5. Record a tag or branch and the date on which the source was verified.
-6. Preserve the upstream repository, path, version, license, and installation command without copying its skill files here.
-
-To propose a skill, edit `skills.json` and add the corresponding human-readable row and installation example to this README. The one-click installer reads the registry automatically, so no script change is needed.
-
-When adding, migrating, or removing a skill, or changing task usage, update the affected content in `skills.json`, this README, and `skill_maps.md` together.
-
-## Validation
-
-Requires Node.js 18 or newer and has no package dependencies. Run the repository checks after modifications:
-
-```bash
-npm run check
-```
-
-The check validates the documented file layout, JSON syntax, required registry fields, GitHub-only sources, the four-agent default preset, and the repo-only overwrite policy.
-
-When the installation list or workflow changes, also run the installation preview:
-
-```bash
-npm run install:all:dry-run
-```
-
-## Security
-
-Skills may contain executable scripts or instructions that invoke tools. Inclusion here confirms source and metadata review, not a security guarantee. Review the upstream skill and its referenced files before installation.
+- [Skill registry](skills.json)
+- [Task and skill map](skill_maps.md)
+- [Installation](docs/installation.md)
+- [Registry maintenance](docs/maintenance.md)
+- [Agent guidelines](AGENTS.md)
 
 ## License
 
-Registry metadata and documentation are available under the MIT License. Each listed skill remains under its upstream license.
-
-Copyright (c) 2026 Open Skill Registry contributors
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+Registry metadata and documentation are available under the [MIT License](LICENSE). Each listed skill remains under its upstream license.

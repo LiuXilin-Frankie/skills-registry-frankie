@@ -53,12 +53,19 @@ if (!Array.isArray(agents) || agents.length !== 4) {
 const npx = process.platform === 'win32' ? 'npx.cmd' : 'npx';
 const agentArgs = agents.flatMap((agent) => ['--agent', agent]);
 const failures = [];
+const enabledCount = registry.skills.filter((skill) => skill.install.enabled !== false).length;
+const deferredCount = registry.skills.length - enabledCount;
 
-console.log(`Installing ${registry.skills.length} skills for ${agents.join(', ')}`);
+console.log(`Installing ${enabledCount} enabled skills for ${agents.join(', ')} (${deferredCount} deferred)`);
 console.log(`Target: ${target}`);
 console.log('Existing skill files will be overwritten.');
 
 for (const skill of registry.skills) {
+  if (skill.install.enabled === false) {
+    console.log(`\n[${skill.name}] SKIPPED: ${skill.install.blockedReason}`);
+    continue;
+  }
+
   const args = [
     '--yes',
     'skills',
@@ -95,5 +102,5 @@ if (failures.length > 0) {
 } else if (dryRun) {
   console.log('\nDry run completed successfully.');
 } else {
-  console.log('\nAll skills installed and updated successfully.');
+  console.log(`\nAll ${enabledCount} enabled skills installed and updated successfully; ${deferredCount} deferred.`);
 }
