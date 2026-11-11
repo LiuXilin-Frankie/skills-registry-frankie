@@ -70,6 +70,12 @@ To install only `quant-trading-model-doc`, run this command from the target proj
 npx skills add https://github.com/LiuXilin-Frankie/quant-trading-model-doc --skill quant-trading-model-doc --agent github-copilot --agent codex --agent claude-code --agent cursor --copy --yes
 ```
 
+### Spec-to-code adaptation
+
+The registry now installs `LiuXilin-Frankie/spec-to-code` using the name `spec-to-code`. It replaces the deferred `trailofbits/spec-to-code-compliance` entry; the upstream plugin itself is not installed. The adaptation bundles its required resources and provides a basic mode when independent subagents are unavailable. Python 3 is optional for record validation. See the [skill map](../skill_maps.md#10-audit-specification-and-code-consistency) for verification limits.
+
+If the old skill was installed separately, installing the new name does not remove it. Use the approved cleanup workflow above when synchronizing an existing project.
+
 ### Migrating writing-great-skills
 
 Upstream [renamed and restructured](https://github.com/mattpocock/skills/commit/1fc6573) `writing-great-skills` as `writing-for-agents`, with no alias for the old name. The cleanup-and-install workflow above removes the retired name after user approval and installs the new entry. Installation alone leaves the retired name in place.

@@ -3,11 +3,11 @@
   "updatedAt": "2026-11-12",
   "skills": [
     {
-      "id": "trailofbits/spec-to-code-compliance",
-      "name": "spec-to-code-compliance",
-      "description": "Audit documented requirements against implementation with per-requirement evidence, independent refutation, and detection of undocumented behavior.",
-      "repository": "https://github.com/trailofbits/skills",
-      "path": "plugins/spec-to-code-compliance/skills/spec-to-code-compliance",
+      "id": "LiuXilin-Frankie/spec-to-code",
+      "name": "spec-to-code",
+      "description": "Audit specifications against implementation with requirement-to-code evidence, undocumented behavior checks, explicit coverage gaps, and independent review when the host supports it.",
+      "repository": "https://github.com/LiuXilin-Frankie/spec-to-code",
+      "path": ".",
       "version": {
         "type": "git-branch",
         "ref": "main",
@@ -16,14 +16,13 @@
       },
       "license": {
         "spdx": "CC-BY-SA-4.0",
-        "url": "https://github.com/trailofbits/skills/blob/main/LICENSE"
+        "url": "https://github.com/LiuXilin-Frankie/spec-to-code/blob/main/LICENSE",
+        "notes": "Adapted from Trail of Bits / Omar Inuwa under the same license; upstream revision and modifications are recorded in NOTICE.md."
       },
       "install": {
         "runner": "skills",
         "scope": "project",
-        "enabled": false,
-        "blockedReason": "The current skill requires the sibling workflows/spec-compliance.js and agents/spec-compliance-checker.md plus their plugin runtime. Named-skill installation copies only the skill directory; complete project-scoped operation across all four required agents is not verified.",
-        "command": "npx skills add https://github.com/trailofbits/skills --skill spec-to-code-compliance"
+        "command": "npx skills add https://github.com/LiuXilin-Frankie/spec-to-code --skill spec-to-code"
       }
     },
     {
